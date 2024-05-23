@@ -45,6 +45,7 @@ INSERT INTO animals (name, type, age, enclosure_id) VALUES ('Alex', 'Monkey', 10
 INSERT INTO animals (name, type, age, enclosure_id) VALUES ('Leo', 'Lion', 8, 1);
 INSERT INTO animals (name, type, age, enclosure_id) VALUES ('Bradley', 'Parrot', 30, 5);
 INSERT INTO animals (name, type, age, enclosure_id) VALUES ('Jennifer', 'Camel', 30, 3);
+INSERT INTO animals (name, type, age, enclosure_id) VALUES ('Tony', 'Tiger', 10, 1);
 
 INSERT INTO staff (name, employee_number) VALUES ('Robbie', 108098);
 INSERT INTO staff (name, employee_number) VALUES ('Sabah', 809707);
@@ -91,5 +92,17 @@ ON animals.enclosure_id = enclosure.id
 ORDER BY animals.age DESC, animals.name ASC;
 
 -- The number of different animal types a given keeper has been assigned to work with.
+SELECT COUNT(type) FROM animals
+INNER JOIN assignments
+ON animals.enclosure_id = assignments.enclosure_id;
+
 -- The number of different keepers who have been assigned to work in a given enclosure
+SELECT COUNT(employee_id) FROM assignments
+INNER JOIN enclosure
+ON assignments.enclosure_id = enclosure.id;
+
 -- The names of the other animals sharing an enclosure with a given animal (eg. find the names of all the animals sharing the big cat field with Tony)
+SELECT animals.name FROM animals
+INNER JOIN enclosure
+ON animals.enclosure_id = enclosure.id
+WHERE enclosure.name = 'Big Cat Field' and animals.name != 'Tony';
