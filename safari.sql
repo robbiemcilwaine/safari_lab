@@ -76,9 +76,7 @@ WHERE enclosure.id = 2;
 
 -- Extensions
 
-
 -- The names of staff working in enclosures which are closed for maintenance
-
 SELECT staff.name FROM staff
 INNER JOIN assignments
 ON staff.id = assignments.employee_id
@@ -86,12 +84,7 @@ INNER JOIN enclosure
 ON assignments.enclosure_id = enclosure.id
 WHERE enclosure.closed_for_maintenance= TRUE;
 
-
-
-
 -- The name of the enclosure where the oldest animal lives. If there are two animals who are the same age choose the first one alphabetically.
-
-
 SELECT animals.name FROM animals
 INNER JOIN enclosure
 ON animals.enclosure_id = enclosure.id
