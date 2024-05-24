@@ -89,7 +89,8 @@ WHERE enclosure.closed_for_maintenance= TRUE;
 SELECT animals.name FROM animals
 INNER JOIN enclosure
 ON animals.enclosure_id = enclosure.id
-ORDER BY animals.age DESC, animals.name ASC;
+ORDER BY animals.age DESC, animals.name ASC
+LIMIT 1;
 
 -- The number of different animal types a given keeper has been assigned to work with.
 SELECT COUNT(type) FROM animals
