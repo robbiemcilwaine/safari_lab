@@ -94,12 +94,14 @@ ORDER BY animals.age DESC, animals.name ASC;
 -- The number of different animal types a given keeper has been assigned to work with.
 SELECT COUNT(type) FROM animals
 INNER JOIN assignments
-ON animals.enclosure_id = assignments.enclosure_id;
+ON animals.enclosure_id = assignments.enclosure_id
+WHERE assignments.employee_id = 1;
 
 -- The number of different keepers who have been assigned to work in a given enclosure
 SELECT COUNT(employee_id) FROM assignments
 INNER JOIN enclosure
-ON assignments.enclosure_id = enclosure.id;
+ON assignments.enclosure_id = enclosure.id
+WHERE enclosure.id = 2;
 
 -- The names of the other animals sharing an enclosure with a given animal (eg. find the names of all the animals sharing the big cat field with Tony)
 SELECT animals.name FROM animals
